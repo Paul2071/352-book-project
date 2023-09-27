@@ -5,7 +5,7 @@
 
 <template>
   <header>
-    <p>Hello world</p>
+    <p>paul smells</p>
     
   </header>
 

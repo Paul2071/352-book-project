@@ -1,0 +1,21 @@
+<template>
+    <div class="home">
+      
+     
+    </div>
+    
+  </template>
+  
+  <script>
+ 
+  export default {
+      name: 'HomeView',
+      
+      setup() {
+         
+          return ;
+      },
+      
+  }
+  </script>
+  
