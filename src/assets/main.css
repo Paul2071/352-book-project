@@ -1,35 +1,32 @@
-@import './base.css';
+/* custom font */
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
 
-  font-weight: normal;
-}
+  /* variable colours */
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-}
+  :root {
+    --mainColour: #006d77;
+    --secondaryColour: #264653;
+    --warningColour: #e63946;
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    --backgroundColour: #edede9;
   }
-}
 
-@media (min-width: 1024px) {
+
+  /* styles to apply to everything */
+
+
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Libre Baskerville', sans-serif;
+    color: var(--mainColour)
+  }
+
   body {
-    display: flex;
-    place-items: center;
+    background: var(--backgroundColour)
   }
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+  a {
+    text-decoration: none;
   }
-}
