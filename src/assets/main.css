@@ -9,6 +9,8 @@
     --secondaryColour: #264653;
     --warningColour: #e63946;
 
+    
+
     --backgroundColour: #edede9;
   }
 
@@ -30,3 +32,14 @@
   a {
     text-decoration: none;
   }
+
+  button, .btn {
+    background: var(--secondaryColour);
+    border-radius: 8px;
+    border: 0;
+    padding: 8px 12px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #edf6f9;
+  }
+
