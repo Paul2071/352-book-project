@@ -55,3 +55,24 @@
     background: var(--secondaryColour);
     cursor: not-allowed;
   }
+
+  /* */
+
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid var(--secondaryColour)
+  }
+
+  input, textarea {
+    border: 0;
+    border-bottom: 1px solid var(--secondaryColour);
+    padding: 10px;
+    outline: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 20px auto;
+  }
