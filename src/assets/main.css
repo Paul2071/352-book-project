@@ -56,7 +56,7 @@
     cursor: not-allowed;
   }
 
-  /* */
+  /* form */
 
   form {
     max-width: 400px;
@@ -75,4 +75,12 @@
     width: 100%;
     box-sizing: border-box;
     margin: 20px auto;
+  }
+
+  /* css for error class */ 
+
+  .error {
+    color: var(--warningColour);
+    font-size: 14px;
+    margin: 16px 0;
   }
