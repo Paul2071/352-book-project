@@ -3,6 +3,7 @@
       Home
      
     </div>
+    <button>click</button>
     
   </template>
   
