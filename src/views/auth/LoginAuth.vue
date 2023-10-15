@@ -5,8 +5,9 @@
         <input type="email" placeholder="Enter email..." v-model="email">
         <input type="password" placeholder="Enter password..." v-model="password">
         <div v-if="error" class="error"> {{ error }}</div>
-        <!-- <button v-if="!isPending">Log in</button>
-        <button v-if="isPending">Loading...</button> -->
+        
+        <button v-if="!isPending">Log in</button>
+        <button v-if="isPending" disabled>Loading...</button>
     </form>
 </template>
 
@@ -22,7 +23,7 @@ export default {
       setup() {
 
 
-        const {error, login } = useLogin()
+        const {error, login, isPending } = useLogin()
 
         const email = ref('')
         const password = ref('')
@@ -33,11 +34,11 @@ export default {
            if (!error.value) {
                console.log("User logged in")
                return res
-            }
+            } 
        }
 
 
-          return { email, password, error, login, handleSubmit} ;
+          return { email, password, error, login, handleSubmit, isPending} ;
       },
 
 }
