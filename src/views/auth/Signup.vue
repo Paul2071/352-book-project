@@ -1,0 +1,46 @@
+<!-- eslint-disable vue/multi-word-component-names -->
+<template>
+     <form @submit.prevent="handleSubmit">
+        <h3>SIGN UP</h3>
+        <input type="text" placeholder="Display name..." v-model="displayName">
+        <input type="email" placeholder="Enter email..." v-model="email">
+        <input type="password" placeholder="Enter password..." v-model="password">
+        <div v-if="error" class="error"> {{ error }}</div>
+        
+        <button v-if="!isPending">Sign up</button>
+        <button v-if="isPending" disabled>Loading...</button>
+    </form>
+</template>
+
+<script >
+
+import  useSignup  from "@/composables/useSignup.js"
+import { ref } from "vue";
+
+export default{ 
+
+    setup () {
+
+        const { error, signup, isPending} = useSignup()
+
+        const email = ref('')
+        const password = ref('')
+        const displayName = ref('')
+
+        const handleSubmit = async () => {
+            const res = await signup( email.value, password.value, displayName.value)
+            if (!error.value) {
+               console.log("User signed up")
+               return res
+            } 
+        }
+
+        return { email, password, displayName, isPending, error, handleSubmit}
+    }
+
+
+
+}
+</script>
+
+
