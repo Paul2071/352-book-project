@@ -1,6 +1,6 @@
 <template>
    
-    <form @submit.prevent="handleSubmit">
+    <form @submit.prevent="handleSubmit" class="loginForm">
         <h3>LOGIN FORM</h3>
         <input type="email" placeholder="Enter email..." v-model="email">
         <input type="password" placeholder="Enter password..." v-model="password">
@@ -44,4 +44,8 @@ export default {
 }
 </script>
 
-<style ></style>
+<style scoped >
+
+
+
+</style>

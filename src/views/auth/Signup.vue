@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-     <form @submit.prevent="handleSubmit">
+     <form @submit.prevent="handleSubmit" class="signupForm">
         <h3>SIGN UP</h3>
         <input type="text" placeholder="Display name..." v-model="displayName">
         <input type="email" placeholder="Enter email..." v-model="email">
@@ -43,4 +43,10 @@ export default{
 }
 </script>
 
+<style scoped>
+
+
+
+
+</style>
 

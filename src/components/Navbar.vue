@@ -1,14 +1,16 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   
 
    <div class="navbar">
         <nav>
-            <h1><router-link :to="{ name: 'home'}">352 book</router-link></h1>
-            <div class="links">
-                <button>Logout</button>
+            
+            
+                <button class="btn">Logout</button>
                 <router-link class="btn" to="/signup">Signup</router-link>
                 <router-link class="btn" to="/login"> Login</router-link>
-            </div>
+                <router-link class="btn" to="/"> Home</router-link>
+            
         </nav>
 
    </div>
@@ -21,3 +23,25 @@ export default {
 }
 
 </script>
+
+
+<style scoped>
+
+.navbar{
+    padding: 16px 10px;
+    margin-bottom: 60px;
+    background: white;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+
+
+</style>
