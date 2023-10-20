@@ -18,7 +18,25 @@
 </template>
 
 <script>
+
+import useLogout from "@/composables/useLogout"
+import { useRouter } from "vue-router"
+
+
+
 export default {
+    setup() {
+        const { logout } = useLogout()
+        const router = useRouter()
+
+       const handleClick = async () => {
+        // await logout()
+        // console.log("user logged out")
+        router.push( "/login")
+       }
+
+       return { handleClick, logout}
+    }
 
 }
 
