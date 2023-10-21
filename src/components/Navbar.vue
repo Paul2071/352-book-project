@@ -6,7 +6,7 @@
         <nav>
             
             
-                <button class="btn">Logout</button>
+                <button @click="handleClick" class="btn">Logout</button>
                 <router-link class="btn" to="/signup">Signup</router-link>
                 <router-link class="btn" to="/login"> Login</router-link>
                 <router-link class="btn" to="/"> Home</router-link>
@@ -30,9 +30,9 @@ export default {
         const router = useRouter()
 
        const handleClick = async () => {
-        // await logout()
-        // console.log("user logged out")
-        router.push( "/login")
+         await logout()
+         console.log("user logged out")
+        router.push( { name: 'LoginAuth' })
        }
 
        return { handleClick, logout}

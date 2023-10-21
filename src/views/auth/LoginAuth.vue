@@ -8,6 +8,8 @@
         
         <button v-if="!isPending">Log in</button>
         <button v-if="isPending" disabled>Loading...</button>
+
+        <p>test login is: example@example.com // test1234 </p>
     </form>
 </template>
 
