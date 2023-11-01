@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import LoginAuth from "../views/auth/LoginAuth.vue"
 import Signup from "../views/auth/Signup.vue"
+import CreateBooklist from "../views/booklist/CreateBooklist.vue"
 
 
 const routes =  [
@@ -19,6 +20,11 @@ const routes =  [
       path: '/signup',
       name: 'Signup',
       component: Signup
+    },
+    {
+      path: '/booklist/create',
+      name: 'createbooklist',
+      component: CreateBooklist
     },
     
     

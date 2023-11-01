@@ -5,10 +5,15 @@
    <div class="navbar">
         <nav>
             
-            
-                <button @click="handleClick" class="btn">Logout</button>
-                <router-link class="btn" to="/signup">Signup</router-link>
-                <router-link class="btn" to="/login"> Login</router-link>
+               <div v-if="user">
+                   <button @click="handleClick" class="btn">Logout</button>
+                   <button  class="btn">Logged in as "{{ user.displayName}}</button>
+               </div> 
+
+               <div v-else>
+                   <router-link class="btn" to="/signup">Signup</router-link>
+                   <router-link class="btn" to="/login"> Login</router-link>
+               </div>
                 <router-link class="btn" to="/"> Home</router-link>
             
         </nav>
@@ -20,6 +25,7 @@
 <script>
 
 import useLogout from "@/composables/useLogout"
+import getUser from "@/composables/getUser"
 import { useRouter } from "vue-router"
 
 
@@ -28,6 +34,7 @@ export default {
     setup() {
         const { logout } = useLogout()
         const router = useRouter()
+        const { user } = getUser()
 
        const handleClick = async () => {
          await logout()
@@ -35,7 +42,7 @@ export default {
         router.push( { name: 'LoginAuth' })
        }
 
-       return { handleClick, logout}
+       return { handleClick, logout, user}
     }
 
 }
