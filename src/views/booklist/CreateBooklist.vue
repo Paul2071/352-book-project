@@ -12,9 +12,10 @@
         <textarea placeholder="100 word or less review" v-model="bookreview"></textarea>
 
         <label>Upload book jacket</label>
-        <input type="file">
+        <input @change="handleChange" type="file">
         
-        <div v-if="error" class="error"> {{ error }}</div>
+        <div v-if="fileError" class="error"> {{ fileError }}</div>
+        
         <button v-if="!isPending">Submit</button>
         <button v-if="isPending" disabled>Loading...</button>
         
@@ -35,6 +36,8 @@
 
         const isPending = ref(false)
         const error = ref(null)
+        const file = ref(null)
+        const fileError = ref(null)
 
         const booktitle = ref('')
         const bookauthor = ref('')
@@ -47,8 +50,30 @@
         const handleSubmit = () => {
             console.log(booktitle.value, bookauthor.value)
         }
+        
+        // allowed file types
+        // selected const is the object given to us by the event of uploading an image - we use files and type from that object here
 
-          return {booktitle, bookauthor, bookgenre, numberofpages, ratingvalue, bookfinished, bookreview, isPending, error, handleSubmit} ;
+        const types = ['image/png', 'image/jpeg']
+
+
+        const handleChange = (e) => {
+            const selected = e.target.files[0]
+            fileError.value = null
+            
+            if (selected && types.includes(selected.type)) {
+                file.value = selected
+            } else 
+            {
+                file.value = null
+                fileError.value = "jpeg or png only please"
+            }
+
+        }
+
+
+
+          return {booktitle, bookauthor, bookgenre, numberofpages, ratingvalue, bookfinished, bookreview, isPending, error, fileError, handleSubmit, handleChange} ;
       },
       
   }
