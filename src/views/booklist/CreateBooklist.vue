@@ -48,7 +48,10 @@
         const bookreview = ref('')
 
         const handleSubmit = () => {
-            console.log(booktitle.value, bookauthor.value)
+            if(file.value) {
+
+                console.log(booktitle.value, bookauthor.value)
+            }
         }
         
         // allowed file types
