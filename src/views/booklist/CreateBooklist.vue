@@ -28,11 +28,14 @@
   <script>
  
  import { ref } from "vue";
+ import useStorage from '@/composables/useStorage'
 
   export default {
       
       
       setup() {
+
+        const { url, filePath, uploadImage} = useStorage()
 
         const isPending = ref(false)
         const error = ref(null)
@@ -47,10 +50,11 @@
         const bookfinished = ref('')
         const bookreview = ref('')
 
-        const handleSubmit = () => {
+        const handleSubmit = async () => {
             if(file.value) {
-
-                console.log(booktitle.value, bookauthor.value)
+                await uploadImage(file.value)
+                console.log('url: ', url.value)
+                
             }
         }
         
@@ -66,6 +70,7 @@
             
             if (selected && types.includes(selected.type)) {
                 file.value = selected
+               selected && console.log(selected)
             } else 
             {
                 file.value = null

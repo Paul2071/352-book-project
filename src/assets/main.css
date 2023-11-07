@@ -48,6 +48,7 @@
   button:hover, .btn:hover {
     background: var(--mainColour);
     color: black; 
+    font-weight: 600;
     
   }
 

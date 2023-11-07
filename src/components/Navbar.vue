@@ -6,8 +6,9 @@
         <nav>
             
                <div v-if="user">
-                   <button @click="handleClick" class="btn">Logout</button>
-                   <button  class="btn">Logged in as "{{ user.displayName}}</button>
+                <router-link class="btn" to="/booklist/create">Add book</router-link>
+                <button  class="btn">Hello, {{ user.displayName}}</button>
+                <button @click="handleClick" class="btn">Logout</button>
                </div> 
 
                <div v-else>
