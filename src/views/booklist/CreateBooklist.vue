@@ -29,6 +29,9 @@
  
  import { ref } from "vue";
  import useStorage from '@/composables/useStorage'
+ import useCollection from '@/composables/useCollection'
+ import getUser from '@/composables/getUser'
+ import { timestamp } from '@/firebase/config'
 
   export default {
       
@@ -36,9 +39,10 @@
       setup() {
 
         const { url, filePath, uploadImage} = useStorage()
+        const { error, addDoc } = useCollection('booklist')
+        const { user } = getUser()
 
         const isPending = ref(false)
-        const error = ref(null)
         const file = ref(null)
         const fileError = ref(null)
 
@@ -53,8 +57,25 @@
         const handleSubmit = async () => {
             if(file.value) {
                 await uploadImage(file.value)
-                console.log('url: ', url.value)
-                
+                //console.log('url: ', url.value)
+                await addDoc({
+                    title : booktitle.value,
+                    author : bookauthor.value,
+                    genre : bookgenre.value,
+                    pages : numberofpages.value,
+                    rating: ratingvalue.value,
+                    finished : bookfinished.value,
+                    review : bookreview.value,
+                    userId : user.value.uid,
+                    userName : user.value.displayName,
+                    coverUrl : url.value,
+                    filePath : filePath.value,
+                    books: [],
+                    createdAt : timestamp()
+                }) 
+                if (!error.value) {
+                    console.log('book added')
+                }
             }
         }
         
@@ -70,7 +91,7 @@
             
             if (selected && types.includes(selected.type)) {
                 file.value = selected
-               selected && console.log(selected)
+              console.log(selected)
             } else 
             {
                 file.value = null
