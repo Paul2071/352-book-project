@@ -4,9 +4,11 @@
       <div v-if="error" class="error" >Could not fetch data</div>
       <div v-if="documents"> 
         <ListView :booklist="documents" />
-        <div v-for="doc in documents" :key = "doc.id">
+    
+        <!-- 
+          not sure if i need this :D:D:D <div v-for="doc in documents" :key = "doc.id">
         {{ doc.title }}
-        </div>
+        </div> -->
       </div>
     </div>
  
