@@ -5,11 +5,25 @@ import Signup from "../views/auth/Signup.vue"
 import CreateBooklist from "../views/booklist/CreateBooklist.vue"
 
 
+//route guards to make sure user is logged import 
+
+import { projectAuth } from '@/firebase/config'
+
+const requireAuth = (to, from, next) => {
+  let user = projectAuth.currentUser
+  if (!user) {
+      next({ name: 'LoginAuth'})
+  } else {
+    next()
+  }
+}
+
 const routes =  [
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      beforeEnter: requireAuth
     },
     {
       path: '/login',
@@ -24,8 +38,9 @@ const routes =  [
     {
       path: '/booklist/create',
       name: 'createbooklist',
-      component: CreateBooklist
-    },
+      component: CreateBooklist,
+      beforeEnter: requireAuth
+    }
     
     
   ]
