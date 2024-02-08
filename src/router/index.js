@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import LoginAuth from "../views/auth/LoginAuth.vue"
 import Signup from "../views/auth/Signup.vue"
 import CreateBooklist from "../views/booklist/CreateBooklist.vue"
+import BooklistDetails from "../views/booklist/BooklistDetails.vue"
 
 
 //route guards to make sure user is logged import 
@@ -40,6 +41,13 @@ const routes =  [
       name: 'createbooklist',
       component: CreateBooklist,
       beforeEnter: requireAuth
+    },
+    {
+      path: '/booklist/:id',
+      name: 'booklistdetails',
+      component: BooklistDetails,
+      beforeEnter: requireAuth,
+      props: true
     }
     
     
