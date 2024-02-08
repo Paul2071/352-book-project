@@ -2,23 +2,24 @@
     <div class="grid-container">
     <div v-for="book in booklist" :key="book.id">  
       
-        <div class="single">
-          <div class="thumbnail">
-            <img :src="book.coverUrl" />
+     <router-link :to=" { name: 'booklistdetails', params: { id: book.id}}">
+          <div class="single">
+            <div class="thumbnail">
+              <img :src="book.coverUrl" />
+            </div>
+            <div class="info">
+              <h3> Title: {{ book.title }}</h3>
+              <h3> Author: {{ book.author }}</h3>          
+              <h3> Genre: {{ book.genre }}</h3>          
+              <h3> Pages: {{ book.pages }}</h3>          
+              <h3> Rating: {{ book.rating }}</h3>          
+              <h3> Finished: {{ book.finished }}</h3>          
+              <h3> Review: {{ book.review }}</h3>          
+                    
+              <p> Created by {{  book.userName }}</p>
+            </div>
           </div>
-          <div class="info">
-            <h3> Title: {{ book.title }}</h3>
-            <h3> Author: {{ book.author }}</h3>          
-            <h3> Genre: {{ book.genre }}</h3>          
-            <h3> Pages: {{ book.pages }}</h3>          
-            <h3> Rating: {{ book.rating }}</h3>          
-            <h3> Finished: {{ book.finished }}</h3>          
-            <h3> Review: {{ book.review }}</h3>          
-                  
-            <p> Created by {{  book.userName }}</p>
-          </div>
-        </div>
-      
+      </router-link>
     </div>
    
     </div>
