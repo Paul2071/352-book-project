@@ -32,6 +32,7 @@
  import useCollection from '@/composables/useCollection'
  import getUser from '@/composables/getUser'
  import { timestamp } from '@/firebase/config'
+ import { useRouter } from "vue-router";
 
   export default {
       
@@ -41,6 +42,7 @@
         const { url, filePath, uploadImage} = useStorage()
         const { error, addDoc } = useCollection('booklist')
         const { user } = getUser()
+        const router = useRouter()
 
         const isPending = ref(false)
         const file = ref(null)
@@ -58,7 +60,7 @@
             if(file.value) {
                 await uploadImage(file.value)
                 //console.log('url: ', url.value)
-                await addDoc({
+                const res = await addDoc({
                     title : booktitle.value,
                     author : bookauthor.value,
                     genre : bookgenre.value,
@@ -74,7 +76,7 @@
                     createdAt : timestamp()
                 }) 
                 if (!error.value) {
-                    console.log('book added')
+                   router.push({name: 'booklistdetails', params: { id: res.id } })
                 }
             }
         }
