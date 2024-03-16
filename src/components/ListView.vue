@@ -13,10 +13,9 @@
               <h3> Genre: {{ book.genre }}</h3>          
               <h3> Pages: {{ book.pages }}</h3>          
               <h3> Rating: {{ book.rating }}</h3>          
-              <h3> Finished: {{ book.finished }}</h3>          
-              <h3> Review: {{ book.review }}</h3>          
-                    
-              <p> Created by {{  book.userName }}</p>
+              <h3> Finished: {{ book.finished }}</h3>      
+          
+            <p> Created by {{  book.userName }}</p>
             </div>
           </div>
       </router-link>
