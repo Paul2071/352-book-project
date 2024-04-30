@@ -14,6 +14,7 @@
          <h2>Finished: {{ document.finished }}</h2>
          <h2>Review: {{ document.review }}</h2>
          <h2>Created by "{{ document.userName }}"</h2>
+         <button v-if="ownership">DELETE BOOK</button>
         
         
       </div>
@@ -22,7 +23,9 @@
 </template>
 
 <script>
+import { computed } from 'vue';
 import getDocument from '../../composables/getDocument';
+import getUser from '../../composables/getUser'
 
 
 export default {
@@ -31,8 +34,14 @@ export default {
  setup(props){
    
    const { error, document} = getDocument('booklist', props.id)
+   const { user } = getUser()
 
-   return {error, document}
+   const ownership = computed( ()=> { 
+      return document.value && user.value && user.value.uid == document.value.userId
+   })
+
+
+   return {error, document, user, ownership}
    }
 }    
 
