@@ -11,19 +11,20 @@ let docRef = projectFirestore.collection(collection).doc(id)
 const deleteDoc = async () => {
     isPending.value = true
     error.value = null
-    const response = await docRef.delete()
-
-    return response
-
+    
     try {
-
+        const response = await docRef.delete()
+        isPending.value = false
+         return response
     } catch(err) {
-
+        console.log(err.message)
+        isPending.value = false
+        error.value = 'could not delete the document'
     }
     
 }
 
-    return {error, isPending}
+    return {error, isPending, deleteDoc}
 }
 
 export default useDocument
