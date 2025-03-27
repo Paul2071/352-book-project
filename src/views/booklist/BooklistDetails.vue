@@ -1,5 +1,5 @@
 <template>
-   <h2> booklsit details - {{ id }}</h2>
+   <h2> booklist details - {{ id }}</h2>
    <div v-if="error" class="error"> {{ error }}</div>
    <div v-if="document" class="book-details"></div>
 
@@ -28,6 +28,8 @@ import { computed } from 'vue';
 import getDocument from '../../composables/getDocument';
 import getUser from '../../composables/getUser'
 import useDocument from '../../composables/useDocument';
+import useStorage from '../../composables/useStorage';
+import { useRouter } from 'vue-router';
 
 
 export default {
@@ -38,13 +40,18 @@ export default {
    const { error, document} = getDocument('booklist', props.id)
    const { user } = getUser()
    const { deleteDoc } = useDocument('booklist', props.id)
+   const { deleteImage } = useStorage()
+   const router = useRouter()
 
    const ownership = computed( ()=> { 
       return document.value && user.value && user.value.uid == document.value.userId
    })
 
    const handleDelete = async () => {
+      await deleteImage(document.value.filePath)
       await deleteDoc()
+      router.push({name: 'home'})
+
    }
 
 
