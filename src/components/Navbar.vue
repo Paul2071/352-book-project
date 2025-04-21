@@ -9,7 +9,7 @@
                 <router-link class="btn" to="/booklist/create">Add book</router-link>
                 <button @click="handleClick" class="btn">Logout</button>
                 <router-link class="btn" to="/booklist/user">  My books</router-link>
-                <button  class="btn">Hello, {{ user.displayName }}</button>
+           
             </div> 
             
             <div v-else>
@@ -17,7 +17,7 @@
                 <router-link class="btn" to="/booklist/create">Add book</router-link>
                 <router-link class="btn" to="/login"> Login</router-link>
             </div>
-            <router-link class="btn" to="/"> Home</router-link>
+            <router-link class="btn" to="/"> All Books</router-link>
             
         </nav>
 

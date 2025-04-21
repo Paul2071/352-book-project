@@ -6,9 +6,22 @@
 
 <script>
 
-export default{
+import getCollection from "@/composables/getCollection"
+import getUser from "@/composables/getUser"
 
-}
+export default {
+    setup() {
+        const { user } = getUser()
+        const { documents } = getCollection(
+            'booklist',
+        ['userId', '==', user.value.uid]
+    )
+
+    console.log(documents)    
+    return { documents }
+        }
+    }
+    
 
 </script>
 
